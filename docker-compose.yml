@@ -1,0 +1,85 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:16-alpine
+    container_name: whiskey-tracker-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: whiskey_tracker
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend API
+  backend:
+    build: ./backend
+    container_name: whiskey-tracker-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/whiskey_tracker
+      - JWT_SECRET=changeme_in_production
+      - UPLOADS_DIRECTORY=/app/data/uploads
+    volumes:
+      - ./backend:/app
+      - app-uploads:/app/data/uploads
+    networks:
+      - backend-network
+      - frontend-network
+    ports:
+      - "8000:8000"  # Expose for local development
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      target: build
+    container_name: whiskey-tracker-frontend
+    restart: unless-stopped
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - frontend-network
+    ports:
+      - "3000:3000"  # Expose for local development
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: whiskey-tracker-nginx
+    restart: unless-stopped
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - app-uploads:/app/uploads
+    networks:
+      - frontend-network
+      - backend-network
+    ports:
+      - "80:80"
+
+networks:
+  frontend-network:
+    driver: bridge
+  backend-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+  app-uploads:

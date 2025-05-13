@@ -1,0 +1,76 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Color palette based on whiskey colors */
+  --color-amber: #ffbf00;
+  --color-caramel: #c68e17;
+  --color-oak: #8b5a2b;
+  --color-mahogany: #4a0100;
+  --color-cream: #f5f5dc;
+  --color-charcoal: #333333;
+  
+  /* Fonts */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  
+  /* Color scheme */
+  color: var(--color-charcoal);
+  background-color: var(--color-cream);
+}
+
+/* App container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+  background-color: var(--color-mahogany);
+  color: var(--color-cream);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Main content */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Footer */
+.app-footer {
+  background-color: var(--color-charcoal);
+  color: var(--color-cream);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Home page */
+.home-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-container h2 {
+  color: var(--color-caramel);
+  margin-bottom: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-main {
+    padding: 1rem;
+  }
+}

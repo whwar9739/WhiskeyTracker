@@ -1,0 +1,49 @@
+/* Global CSS styles */
+:root {
+  /* Color palette based on whiskey colors */
+  --color-amber: #ffbf00;
+  --color-caramel: #c68e17;
+  --color-oak: #8b5a2b;
+  --color-mahogany: #4a0100;
+  --color-cream: #f5f5dc;
+  --color-charcoal: #333333;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-oak);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-caramel);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid var(--color-caramel);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-amber);
+  color: var(--color-charcoal);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: var(--color-caramel);
+  color: var(--color-cream);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--color-caramel);
+}

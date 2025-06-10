@@ -1,0 +1,10 @@
+// Test setup file for React Testing Library
+import { afterEach } from 'vitest';
+import { cleanup } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import 'whatwg-fetch';
+
+// Runs a cleanup after each test case
+afterEach(() => {
+  cleanup();
+});

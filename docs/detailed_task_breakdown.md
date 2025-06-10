@@ -10,42 +10,42 @@ This document breaks down the features outlined in the `phased_development_plan.
 
 **P1.1: User Authentication**
 
-*   **P1.1.1: Backend - User Model & DB Schema**
+*   ✅ **P1.1.1: Backend - User Model & DB Schema**
     *   Define `User` SQLAlchemy model (id, username, email, hashed_password, role).
     *   Create Alembic migration for `users` table.
-*   **P1.1.2: Backend - Registration Endpoint**
+*   ✅ **P1.1.2: Backend - Registration Endpoint**
     *   FastAPI: `POST /api/users/register` (username, email, password).
     *   Implement password hashing (bcrypt/Argon2).
     *   Input validation (Pydantic model).
     *   Handle duplicate username/email errors.
-*   **P1.1.3: Backend - Login Endpoint & JWT**
+*   ✅ **P1.1.3: Backend - Login Endpoint & JWT**
     *   FastAPI: `POST /api/auth/token` (username/email, password).
     *   Validate credentials.
     *   Generate JWT access token (define secret, algorithm, expiration).
-*   **P1.1.4: Backend - Password Reset (Token Generation)**
+*   ✅ **P1.1.4: Backend - Password Reset (Token Generation)**
     *   FastAPI: `POST /api/users/request-password-reset` (email) - generates & stores reset token.
     *   FastAPI: `POST /api/users/reset-password` (token, new_password) - validates token & updates password.
     *   (Email sending can be mocked or deferred).
-*   **P1.1.5: Backend - JWT Authentication Middleware**
+*   ✅ **P1.1.5: Backend - JWT Authentication Middleware**
     *   FastAPI middleware to verify JWT on protected routes.
     *   Function to get current authenticated user from token.
-*   **P1.1.6: Frontend - Registration Form Component**
+*   ✅ **P1.1.6: Frontend - Registration Form Component**
     *   React: Create registration form (username, email, password, confirm password).
     *   Client-side validation.
     *   API call to `POST /api/users/register`.
     *   Handle success/error responses & user feedback.
-*   **P1.1.7: Frontend - Login Form Component**
+*   ✅ **P1.1.7: Frontend - Login Form Component**
     *   React: Create login form (username/email, password).
     *   API call to `POST /api/auth/token`.
     *   Store JWT in React Context / localStorage.
     *   Handle success/error responses & user feedback.
-*   **P1.1.8: Frontend - Password Reset Request Form**
+*   ✅ **P1.1.8: Frontend - Password Reset Request Form**
     *   React: Form for email input.
     *   API call to `POST /api/users/request-password-reset`.
-*   **P1.1.9: Frontend - Password Reset Form**
+*   ✅ **P1.1.9: Frontend - Password Reset Form**
     *   React: Form for token (from URL param), new password, confirm new password.
     *   API call to `POST /api/users/reset-password`.
-*   **P1.1.10: Frontend - Auth Context & Routing**
+*   ✅ **P1.1.10: Frontend - Auth Context & Routing**
     *   React Context for managing auth state (user, token, isAuthenticated).
     *   Implement protected routes using React Router.
     *   Redirect unauthenticated users to login.
@@ -313,7 +313,26 @@ This document breaks down the features outlined in the `phased_development_plan.
 
 ## Phase 5: Future Considerations & Community
 
-*(Breakdown for Group Collaboration, API Integrations, etc.)*
+**P5.1: Community & Collaboration Features**
+*   *(Breakdown for Group Collaboration, Sharing Features, etc.)*
+
+**P5.2: External Integrations**
+*   *(Breakdown for API Integrations with whiskey databases, etc.)*
+
+**P5.3: Authentication Enhancements**
+*   **P5.3.1: Backend - Persistent Password Reset Tokens**
+    *   Create a `PasswordResetToken` model (id, user_id, token, expires_at, used).
+    *   Alembic migration for `password_reset_tokens` table.
+    *   Update password reset endpoints to use the database instead of in-memory storage.
+    *   Add token cleanup (scheduled job to remove expired tokens).
+*   **P5.3.2: Backend - Email Service Integration**
+    *   Implement email sending service (using SMTP or a service like SendGrid/Mailgun).
+    *   Update password reset endpoint to actually send reset emails.
+    *   Create email templates for reset password.
+    *   Add configuration for email settings.
+
+**P5.4: Mobile Applications**
+*   *(Breakdown for native mobile apps or PWA enhancements)*
 
 ---
 
@@ -326,5 +345,3 @@ This document breaks down the features outlined in the `phased_development_plan.
 *   **Performance:** Monitor and optimize queries and frontend rendering as data grows.
 *   **Accessibility:** Continuously test against WCAG 2.1 AA as UI elements are built.
 *   **Refactoring:** Address tech debt and refactor code as needed.
-
-```

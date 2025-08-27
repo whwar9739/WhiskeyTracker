@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16
+    container_name: whiskeytracker_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: WhiskeyTrackerDb
+      POSTGRES_USER: whiskeyuser
+      POSTGRES_PASSWORD: whiskeypass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - whiskeytracker_net
+volumes:
+  postgres_data:
+networks:
+  whiskeytracker_net:
+    driver: bridge

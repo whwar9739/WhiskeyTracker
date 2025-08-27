@@ -172,3 +172,38 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# .NET Core / ASP.NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+.vscode/
+*.dbmdl
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+TestResults/
+
+# Angular / Node
+node_modules/
+dist/
+coverage/
+
+# Docker
+**/postgres_data/
+**/docker-data/
+*.pid
+*.log
+
+# Insomnia (keep only one export if desired)
+*.insomnia.json
+
+# OS / Editor
+.DS_Store
+Thumbs.db

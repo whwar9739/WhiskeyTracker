@@ -1,0 +1,478 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-08-27T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2025.8.27",
+  "resources": [
+    {
+      "_id": "wrk_WhiskeyTracker",
+      "_type": "workspace",
+      "name": "WhiskeyTracker API"
+    },
+    {
+      "_id": "env_WhiskeyTracker",
+      "_type": "environment",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:5000/api"
+      }
+    },
+    {
+      "_id": "fld_Users",
+      "_type": "request_group",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "Users"
+    },
+    {
+      "_id": "req_Users_GetAll",
+      "_type": "request",
+      "parentId": "fld_Users",
+      "name": "Get All Users",
+      "method": "GET",
+      "url": "{{ base_url }}/Users",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Users_GetById",
+      "_type": "request",
+      "parentId": "fld_Users",
+      "name": "Get User By Id",
+      "method": "GET",
+      "url": "{{ base_url }}/Users/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Users_Post",
+      "_type": "request",
+      "parentId": "fld_Users",
+      "name": "Create User",
+      "method": "POST",
+      "url": "{{ base_url }}/Users",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Username\": \"newuser\",\n  \"Email\": \"new@example.com\",\n  \"HashedPassword\": \"hashed\",\n  \"Role\": \"User\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Users_Put",
+      "_type": "request",
+      "parentId": "fld_Users",
+      "name": "Update User",
+      "method": "PUT",
+      "url": "{{ base_url }}/Users/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Id\": 1,\n  \"Username\": \"updateduser\",\n  \"Email\": \"updated@example.com\",\n  \"HashedPassword\": \"hashed\",\n  \"Role\": \"User\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Users_Delete",
+      "_type": "request",
+      "parentId": "fld_Users",
+      "name": "Delete User",
+      "method": "DELETE",
+      "url": "{{ base_url }}/Users/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "fld_Whiskies",
+      "_type": "request_group",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "Whiskies"
+    },
+    {
+      "_id": "req_Whiskies_GetAll",
+      "_type": "request",
+      "parentId": "fld_Whiskies",
+      "name": "Get All Whiskies",
+      "method": "GET",
+      "url": "{{ base_url }}/Whiskies",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Whiskies_GetById",
+      "_type": "request",
+      "parentId": "fld_Whiskies",
+      "name": "Get Whiskey By Id",
+      "method": "GET",
+      "url": "{{ base_url }}/Whiskies/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Whiskies_Post",
+      "_type": "request",
+      "parentId": "fld_Whiskies",
+      "name": "Create Whiskey",
+      "method": "POST",
+      "url": "{{ base_url }}/Whiskies",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"UserId\": 1,\n  \"Distillery\": \"Glenlivet\",\n  \"Name\": \"Founder's Reserve\",\n  \"Region\": \"Speyside\",\n  \"AgeStatement\": \"No Age\",\n  \"ABV\": 40.0,\n  \"ImageFilename\": \"glenlivet.png\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Whiskies_Put",
+      "_type": "request",
+      "parentId": "fld_Whiskies",
+      "name": "Update Whiskey",
+      "method": "PUT",
+      "url": "{{ base_url }}/Whiskies/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Id\": 1,\n  \"UserId\": 1,\n  \"Distillery\": \"Glenlivet\",\n  \"Name\": \"Updated Reserve\",\n  \"Region\": \"Speyside\",\n  \"AgeStatement\": \"No Age\",\n  \"ABV\": 40.0,\n  \"ImageFilename\": \"glenlivet.png\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Whiskies_Delete",
+      "_type": "request",
+      "parentId": "fld_Whiskies",
+      "name": "Delete Whiskey",
+      "method": "DELETE",
+      "url": "{{ base_url }}/Whiskies/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "fld_TastingNotes",
+      "_type": "request_group",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "TastingNotes"
+    },
+    {
+      "_id": "req_TastingNotes_GetAll",
+      "_type": "request",
+      "parentId": "fld_TastingNotes",
+      "name": "Get All TastingNotes",
+      "method": "GET",
+      "url": "{{ base_url }}/TastingNotes",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingNotes_GetById",
+      "_type": "request",
+      "parentId": "fld_TastingNotes",
+      "name": "Get TastingNote By Id",
+      "method": "GET",
+      "url": "{{ base_url }}/TastingNotes/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingNotes_Post",
+      "_type": "request",
+      "parentId": "fld_TastingNotes",
+      "name": "Create TastingNote",
+      "method": "POST",
+      "url": "{{ base_url }}/TastingNotes",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"WhiskeyId\": 1,\n  \"UserId\": 1,\n  \"Notes\": \"Smooth and fruity\",\n  \"Rating\": 4\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingNotes_Put",
+      "_type": "request",
+      "parentId": "fld_TastingNotes",
+      "name": "Update TastingNote",
+      "method": "PUT",
+      "url": "{{ base_url }}/TastingNotes/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Id\": 1,\n  \"WhiskeyId\": 1,\n  \"UserId\": 1,\n  \"Notes\": \"Updated notes\",\n  \"Rating\": 5\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingNotes_Delete",
+      "_type": "request",
+      "parentId": "fld_TastingNotes",
+      "name": "Delete TastingNote",
+      "method": "DELETE",
+      "url": "{{ base_url }}/TastingNotes/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "fld_Inventory",
+      "_type": "request_group",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "Inventory"
+    },
+    {
+      "_id": "req_Inventory_GetAll",
+      "_type": "request",
+      "parentId": "fld_Inventory",
+      "name": "Get All Inventory",
+      "method": "GET",
+      "url": "{{ base_url }}/Inventory",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Inventory_GetById",
+      "_type": "request",
+      "parentId": "fld_Inventory",
+      "name": "Get Inventory By Id",
+      "method": "GET",
+      "url": "{{ base_url }}/Inventory/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Inventory_Post",
+      "_type": "request",
+      "parentId": "fld_Inventory",
+      "name": "Create Inventory",
+      "method": "POST",
+      "url": "{{ base_url }}/Inventory",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"UserId\": 1,\n  \"WhiskeyId\": 1,\n  \"Quantity\": 1,\n  \"Status\": \"Open\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Inventory_Put",
+      "_type": "request",
+      "parentId": "fld_Inventory",
+      "name": "Update Inventory",
+      "method": "PUT",
+      "url": "{{ base_url }}/Inventory/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Id\": 1,\n  \"UserId\": 1,\n  \"WhiskeyId\": 1,\n  \"Quantity\": 2,\n  \"Status\": \"Consumed\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_Inventory_Delete",
+      "_type": "request",
+      "parentId": "fld_Inventory",
+      "name": "Delete Inventory",
+      "method": "DELETE",
+      "url": "{{ base_url }}/Inventory/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "fld_TastingSessions",
+      "_type": "request_group",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "TastingSessions"
+    },
+    {
+      "_id": "req_TastingSessions_GetAll",
+      "_type": "request",
+      "parentId": "fld_TastingSessions",
+      "name": "Get All TastingSessions",
+      "method": "GET",
+      "url": "{{ base_url }}/TastingSessions",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingSessions_GetById",
+      "_type": "request",
+      "parentId": "fld_TastingSessions",
+      "name": "Get TastingSession By Id",
+      "method": "GET",
+      "url": "{{ base_url }}/TastingSessions/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingSessions_Post",
+      "_type": "request",
+      "parentId": "fld_TastingSessions",
+      "name": "Create TastingSession",
+      "method": "POST",
+      "url": "{{ base_url }}/TastingSessions",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"UserId\": 1,\n  \"Name\": \"First Session\",\n  \"Date\": \"2025-08-27T00:00:00Z\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingSessions_Put",
+      "_type": "request",
+      "parentId": "fld_TastingSessions",
+      "name": "Update TastingSession",
+      "method": "PUT",
+      "url": "{{ base_url }}/TastingSessions/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Id\": 1,\n  \"UserId\": 1,\n  \"Name\": \"Updated Session\",\n  \"Date\": \"2025-08-28T00:00:00Z\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_TastingSessions_Delete",
+      "_type": "request",
+      "parentId": "fld_TastingSessions",
+      "name": "Delete TastingSession",
+      "method": "DELETE",
+      "url": "{{ base_url }}/TastingSessions/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "fld_InfinityBottles",
+      "_type": "request_group",
+      "parentId": "wrk_WhiskeyTracker",
+      "name": "InfinityBottles"
+    },
+    {
+      "_id": "req_InfinityBottles_GetAll",
+      "_type": "request",
+      "parentId": "fld_InfinityBottles",
+      "name": "Get All InfinityBottles",
+      "method": "GET",
+      "url": "{{ base_url }}/InfinityBottles",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_InfinityBottles_GetById",
+      "_type": "request",
+      "parentId": "fld_InfinityBottles",
+      "name": "Get InfinityBottle By Id",
+      "method": "GET",
+      "url": "{{ base_url }}/InfinityBottles/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    },
+    {
+      "_id": "req_InfinityBottles_Post",
+      "_type": "request",
+      "parentId": "fld_InfinityBottles",
+      "name": "Create InfinityBottle",
+      "method": "POST",
+      "url": "{{ base_url }}/InfinityBottles",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"UserId\": 1,\n  \"Name\": \"Infinity Blend\",\n  \"Description\": \"A mix of favorites\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_InfinityBottles_Put",
+      "_type": "request",
+      "parentId": "fld_InfinityBottles",
+      "name": "Update InfinityBottle",
+      "method": "PUT",
+      "url": "{{ base_url }}/InfinityBottles/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"Id\": 1,\n  \"UserId\": 1,\n  \"Name\": \"Updated Blend\",\n  \"Description\": \"A new mix\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {}
+    },
+    {
+      "_id": "req_InfinityBottles_Delete",
+      "_type": "request",
+      "parentId": "fld_InfinityBottles",
+      "name": "Delete InfinityBottle",
+      "method": "DELETE",
+      "url": "{{ base_url }}/InfinityBottles/1",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {}
+    }
+  ]
+}

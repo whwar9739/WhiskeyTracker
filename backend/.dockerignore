@@ -1,0 +1,8 @@
+bin/
+obj/
+*.db
+*.mdf
+*.ldf
+.env
+Dockerfile*
+node_modules/

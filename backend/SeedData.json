@@ -1,0 +1,20 @@
+{
+  "Users": [
+    { "Username": "testuser", "Email": "test@example.com", "HashedPassword": "hashed", "Role": "User" }
+  ],
+  "Whiskies": [
+    { "UserId": 1, "Distillery": "Glenlivet", "Name": "Founder's Reserve", "Region": "Speyside", "AgeStatement": "No Age", "ABV": 40.0, "ImageFilename": "glenlivet.png" }
+  ],
+  "TastingNotes": [
+    { "WhiskeyId": 1, "UserId": 1, "Notes": "Smooth and fruity", "Rating": 4 }
+  ],
+  "Inventory": [
+    { "UserId": 1, "WhiskeyId": 1, "Quantity": 1, "Status": "Open" }
+  ],
+  "TastingSessions": [
+    { "UserId": 1, "Name": "First Session", "Date": "2025-08-27T00:00:00Z" }
+  ],
+  "InfinityBottles": [
+    { "UserId": 1, "Name": "Infinity Blend", "Description": "A mix of favorites" }
+  ]
+}

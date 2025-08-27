@@ -1,0 +1,7 @@
+<div *ngIf="loading">Loading users...</div>
+<div *ngIf="error">{{ error }}</div>
+<ul *ngIf="!loading && !error">
+  <li *ngFor="let user of users">
+    {{ user.username }} ({{ user.email }}) - {{ user.role }}
+  </li>
+</ul>

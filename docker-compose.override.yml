@@ -1,0 +1,6 @@
+services:
+  postgres:
+    volumes:
+      - /var/lib/postgresql/data
+  backend:
+    command: /bin/sh -c "dotnet ef database update --project /src/WhiskeyTracker.Api.csproj && dotnet WhiskeyTracker.Api.dll"
